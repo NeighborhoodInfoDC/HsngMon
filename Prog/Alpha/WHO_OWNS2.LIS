@@ -1,0 +1,94 @@
+ /WHO_OWNS2.SAS;9:  NeighborhoodInfo DC                                                 13:37 Wednesday, October 25, 2006   1
+ 
+  Obs        SSL                     PREMISEADD                          ADDRESS2
+ 
+    1    0004N   2001    2600 PENNSYLVANIA AV NW Unit: 0201    2600 PENNSYLVANIA AVE NW APT
+    2    0004N   2002    2600 PENNSYLVANIA AV NW Unit: 0202    1719 CONNECTICUT AVE NW     
+    3    0004N   2003    2600 PENNSYLVANIA AV NW Unit: 0203    2600 PENNSYLVANIA AVE NW APT
+    4    0004N   2004    2600 PENNSYLVANIA AV NW Unit: 0204    2600 PENNSYLVANIA AVE NW APT
+    5    0004N   2006    2600 PENNSYLVANIA AV NW Unit: 0302    2000 L ST NW STE 675        
+    6    0004N   2008    2600 PENNSYLVANIA AV NW Unit: 0304    3 WASHINGTON CIR NW         
+    7    0004N   2010    2600 PENNSYLVANIA AV NW Unit: 0402    2600 PENNSYLVANIA AVE NW    
+    8    0004N   2011    2600 PENNSYLVANIA AV NW Unit: 0403    2600 PENNSYLVANIA AVE NW APT
+    9    0004N   2012    2600 PENNSYLVANIA AV NW Unit: 0404    2600 PENNSYLVANIA AVE NW APT
+   10    0004N   2014    2600 PENNSYLVANIA AV NW Unit: 0502    2600 PENNSYLVANIA AVE NW APT
+   11    0004N   2017    2600 PENNSYLVANIA AV NW Unit: 0601    2600 PENNSYLVANIA AVE NW APT
+   12    0004N   2018    2600 PENNSYLVANIA AV NW Unit: 0602    2600 PENNSYLVANIA AVE NW APT
+   13    0004N   2019    2600 PENNSYLVANIA AV NW Unit: 0603    2600 PENNSYLVANIA AVE NW APT
+   14    0004N   2020    2600 PENNSYLVANIA AV NW Unit: 0604    2600 PENNSYLVANIA AVE NW APT
+   15    0004N   2021    2600 PENNSYLVANIA AV NW Unit: 0701    2600 PENNSYLVANIA AVE NW APT
+   16    0004N   2022    2600 PENNSYLVANIA AV NW Unit: 0702    2600 PENNSYLVANIA AVE NW APT
+   17    0004N   2023    2600 PENNSYLVANIA AV NW Unit: 0703    1920 L ST NW STE 300        
+   18    0004N   2024    2600 PENNSYLVANIA AV NW Unit: 0704    2600 PENNSYLVANIA AVE NW APT
+   19    0004N   2025    2600 PENNSYLVANIA AV NW Unit: 0801    2600 PENNSYLVANIA AVE NW APT
+   20    0004N   2027    2600 PENNSYLVANIA AV NW Unit: 0803    2600 PENNSYLVANIA AVE NW APT
+ 
+  Obs             ui_proptype                 premiseadd_std
+ 
+    1    Residential: Condominium unit    2600 PENNSYLVANIA AV NW
+    2    Residential: Condominium unit    2600 PENNSYLVANIA AV NW
+    3    Residential: Condominium unit    2600 PENNSYLVANIA AV NW
+    4    Residential: Condominium unit    2600 PENNSYLVANIA AV NW
+    5    Residential: Condominium unit    2600 PENNSYLVANIA AV NW
+    6    Residential: Condominium unit    2600 PENNSYLVANIA AV NW
+    7    Residential: Condominium unit    2600 PENNSYLVANIA AV NW
+    8    Residential: Condominium unit    2600 PENNSYLVANIA AV NW
+    9    Residential: Condominium unit    2600 PENNSYLVANIA AV NW
+   10    Residential: Condominium unit    2600 PENNSYLVANIA AV NW
+   11    Residential: Condominium unit    2600 PENNSYLVANIA AV NW
+   12    Residential: Condominium unit    2600 PENNSYLVANIA AV NW
+   13    Residential: Condominium unit    2600 PENNSYLVANIA AV NW
+   14    Residential: Condominium unit    2600 PENNSYLVANIA AV NW
+   15    Residential: Condominium unit    2600 PENNSYLVANIA AV NW
+   16    Residential: Condominium unit    2600 PENNSYLVANIA AV NW
+   17    Residential: Condominium unit    2600 PENNSYLVANIA AV NW
+   18    Residential: Condominium unit    2600 PENNSYLVANIA AV NW
+   19    Residential: Condominium unit    2600 PENNSYLVANIA AV NW
+   20    Residential: Condominium unit    2600 PENNSYLVANIA AV NW
+1/WHO_OWNS2.SAS;9:  NeighborhoodInfo DC                                                 13:37 Wednesday, October 25, 2006   2
+ 
+  Obs        SSL                     PREMISEADD                          ADDRESS2
+ 
+    1    0004N   2001    2600 PENNSYLVANIA AV NW Unit: 0201    2600 PENNSYLVANIA AVE NW APT
+    2    0004N   2002    2600 PENNSYLVANIA AV NW Unit: 0202    1719 CONNECTICUT AVE NW     
+    3    0004N   2003    2600 PENNSYLVANIA AV NW Unit: 0203    2600 PENNSYLVANIA AVE NW APT
+    4    0004N   2004    2600 PENNSYLVANIA AV NW Unit: 0204    2600 PENNSYLVANIA AVE NW APT
+    5    0004N   2006    2600 PENNSYLVANIA AV NW Unit: 0302    2000 L ST NW STE 675        
+    6    0004N   2008    2600 PENNSYLVANIA AV NW Unit: 0304    3 WASHINGTON CIR NW         
+    7    0004N   2010    2600 PENNSYLVANIA AV NW Unit: 0402    2600 PENNSYLVANIA AVE NW    
+    8    0004N   2011    2600 PENNSYLVANIA AV NW Unit: 0403    2600 PENNSYLVANIA AVE NW APT
+    9    0004N   2012    2600 PENNSYLVANIA AV NW Unit: 0404    2600 PENNSYLVANIA AVE NW APT
+   10    0004N   2014    2600 PENNSYLVANIA AV NW Unit: 0502    2600 PENNSYLVANIA AVE NW APT
+   11    0004N   2017    2600 PENNSYLVANIA AV NW Unit: 0601    2600 PENNSYLVANIA AVE NW APT
+   12    0004N   2018    2600 PENNSYLVANIA AV NW Unit: 0602    2600 PENNSYLVANIA AVE NW APT
+   13    0004N   2019    2600 PENNSYLVANIA AV NW Unit: 0603    2600 PENNSYLVANIA AVE NW APT
+   14    0004N   2020    2600 PENNSYLVANIA AV NW Unit: 0604    2600 PENNSYLVANIA AVE NW APT
+   15    0004N   2021    2600 PENNSYLVANIA AV NW Unit: 0701    2600 PENNSYLVANIA AVE NW APT
+   16    0004N   2022    2600 PENNSYLVANIA AV NW Unit: 0702    2600 PENNSYLVANIA AVE NW APT
+   17    0004N   2023    2600 PENNSYLVANIA AV NW Unit: 0703    1920 L ST NW STE 300        
+   18    0004N   2024    2600 PENNSYLVANIA AV NW Unit: 0704    2600 PENNSYLVANIA AVE NW APT
+   19    0004N   2025    2600 PENNSYLVANIA AV NW Unit: 0801    2600 PENNSYLVANIA AVE NW APT
+   20    0004N   2027    2600 PENNSYLVANIA AV NW Unit: 0803    2600 PENNSYLVANIA AVE NW APT
+ 
+  Obs             ui_proptype             address2_std
+ 
+    1    Residential: Condominium unit    2600 PENNSYLVANIA AV NW
+    2    Residential: Condominium unit    1719 CONNECTICUT AV NW 
+    3    Residential: Condominium unit    2600 PENNSYLVANIA AV NW
+    4    Residential: Condominium unit    2600 PENNSYLVANIA AV NW
+    5    Residential: Condominium unit    2000 L ST NW           
+    6    Residential: Condominium unit    3 WASHINGTON CIR NW    
+    7    Residential: Condominium unit    2600 PENNSYLVANIA AV NW
+    8    Residential: Condominium unit    2600 PENNSYLVANIA AV NW
+    9    Residential: Condominium unit    2600 PENNSYLVANIA AV NW
+   10    Residential: Condominium unit    2600 PENNSYLVANIA AV NW
+   11    Residential: Condominium unit    2600 PENNSYLVANIA AV NW
+   12    Residential: Condominium unit    2600 PENNSYLVANIA AV NW
+   13    Residential: Condominium unit    2600 PENNSYLVANIA AV NW
+   14    Residential: Condominium unit    2600 PENNSYLVANIA AV NW
+   15    Residential: Condominium unit    2600 PENNSYLVANIA AV NW
+   16    Residential: Condominium unit    2600 PENNSYLVANIA AV NW
+   17    Residential: Condominium unit    1920 L ST NW           
+   18    Residential: Condominium unit    2600 PENNSYLVANIA AV NW
+   19    Residential: Condominium unit    2600 PENNSYLVANIA AV NW
+   20    Residential: Condominium unit    2600 PENNSYLVANIA AV NW

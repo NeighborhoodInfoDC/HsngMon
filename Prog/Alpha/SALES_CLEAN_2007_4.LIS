@@ -1,0 +1,113 @@
+ /SALES_CLEAN_2007_4.SAS;3:  NeighborhoodInfo DC                                        10:42 Thursday, November 22, 2007   1
+ File = Sales_clean_2007_4
+ 
+ The CONTENTS Procedure
+ 
+ Data Set Name        WORK.SALES_CLEAN_2007_4          Observations          80681
+ Member Type          DATA                             Variables             10   
+ Engine               V9                               Indexes               0    
+ Created              Thu, Nov 22, 2007 10:42:33 AM    Observation Length    72   
+ Last Modified        Thu, Nov 22, 2007 10:42:33 AM    Deleted Observations  0    
+ Protection                                            Compressed            NO   
+ Data Set Type                                         Sorted                NO   
+ Label                                                                            
+ Data Representation  ALPHA_VMS_64                                                
+ Encoding             latin1  Western (ISO)                                       
+ 
+ 
+                                 Engine/Host Dependent Information
+ 
+ Data Set Page Size          8192                                                                  
+ Number of Data Set Pages    715                                                                   
+ First Data Page             1                                                                     
+ Max Obs per Page            113                                                                   
+ Obs in First Data Page      81                                                                    
+ Number of Data Set Repairs  0                                                                     
+ Filename                    $1$DGA156:[SCRATCH.DCDATA.SAS$WORK20C50595]SALES_CLEAN_2007_4.SAS7BDAT
+ Release Created             9.0101M3                                                              
+ Host Created                OpenVMS                                                               
+ File Size (blocks)          11441                                                                 
+ 
+ 
+                                 Alphabetic List of Variables and Attributes
+  
+  #    Variable              Type    Len    Format       Label
+ 
+  4    Cluster_tr2000        Char      2    $CLUS00A.    Neighborhood cluster (tract-based, 2000)          
+  2    SALEDATE              Num       8    MMDDYY10.    Property sale date                                
+  1    SALEPRICE             Num       8                 Property sale price ($)                           
+  6    SSL                   Char     17                 Property Identification Number (Square/Suffix/Lot)
+  7    UI_PROPTYPE           Char      2    $UIPRTYP.    UI property type code                             
+  3    Ward2002              Char      1    $WARD02A.    Ward (2002)                                       
+  5    owner_occ_sale        Num       3    YESNO.       Owner-occupied sale                               
+ 10    pct_owner_occ_sale    Num       8                 Pct. owner-occupied sale                          
+  8    saledate_yr           Num       8                 Property sale year                                
+  9    saleprice_adj         Num       8                 Property sale price (2007 $)                      
+1/SALES_CLEAN_2007_4.SAS;3:  NeighborhoodInfo DC                                        10:42 Thursday, November 22, 2007   2
+ File = Sales_clean_2007_4
+ Printing first 10 obs.
+ 
+                                                                                                                    p
+                                                                                                                    c
+                                                                                                                    t
+                                                                                                                    _
+                                        C       o                                                                   o
+                                        l       w                                                          s        w
+                                        u       n                                                          a        n
+                                        s       e                               U                  s       l        e
+                                        t       r                               I                  a       e        r
+           S                            e       _                               _                  l       p        _
+           A             S    W         r       o                               P                  e       r        o
+           L             A    a         _       c                               R                  d       i        c
+           E             L    r         t       c                               O                  a       c        c
+           P             E    d         r       _                               P                  t       e        _
+           R             D    2         2       s                               T                  e       _        s
+   O       I             A    0         0       a        S                      Y                  _       a        a
+   b       C             T    0         0       l        S                      P                  y       d        l
+   s       E             E    2         0       e        L                      E                  r       j        e
+ 
+     1  475000  08/07/2001  Ward 2  Cluster 5  Yes  0004N   2001  Residential: Condominium unit  2001  551732.21  100
+     2  575000  10/29/2003  Ward 2  Cluster 5  Yes  0004N   2001  Residential: Condominium unit  2003  642840.63  100
+     3  518950  09/28/2001  Ward 2  Cluster 5  Yes  0004N   2002  Residential: Condominium unit  2001  602781.96  100
+     4  525000  08/07/2001  Ward 2  Cluster 5  Yes  0004N   2003  Residential: Condominium unit  2001  609809.29  100
+     5  550000  10/12/2001  Ward 2  Cluster 5  Yes  0004N   2004  Residential: Condominium unit  2001  638847.83  100
+     6  520000  02/04/2002  Ward 2  Cluster 5    N  0004N   2005  Residential: Condominium unit  2002  594600.78    .
+     7  525000  08/02/2001  Ward 2  Cluster 5  No   0004N   2006  Residential: Condominium unit  2001  609809.29    0
+     8  560000  07/17/2001  Ward 2  Cluster 5  Yes  0004N   2007  Residential: Condominium unit  2001  650463.24  100
+     9  850000  05/17/2005  Ward 2  Cluster 5    N  0004N   2007  Residential: Condominium unit  2005  895302.87    .
+    10  580000  08/17/2001  Ward 2  Cluster 5  No   0004N   2008  Residential: Condominium unit  2001  673694.07    0
+1/SALES_CLEAN_2007_4.SAS;3:  NeighborhoodInfo DC                                        10:42 Thursday, November 22, 2007   3
+ File = Sales_clean_2007_4
+ 
+ The MEANS Procedure
+ 
+ Variable                  N             Sum            Mean         Std Dev         Minimum         Maximum
+ -----------------------------------------------------------------------------------------------------------
+ SALEPRICE             80681     24441868528       302944.54       252336.12        19500.00      2950000.00
+ SALEDATE              80681      1238143695        15346.16         1164.49        13150.00        17255.00
+ owner_occ_sale        50926        44194.00       0.8678082       0.3387025               0       1.0000000
+ saledate_yr           80681       161483527         2001.51       3.1936722         1996.00         2007.00
+ saleprice_adj         80681     27418438702       339837.62       271171.97        25566.13      2950000.00
+ pct_owner_occ_sale    50926      4419400.00      86.7808192      33.8702504               0     100.0000000
+ -----------------------------------------------------------------------------------------------------------
+1/SALES_CLEAN_2007_4.SAS;3:  NeighborhoodInfo DC                                        10:42 Thursday, November 22, 2007   4
+ 
+ ----------------------------------------------------------------------
+ |                             |       Pct. owner-occupied sale       |
+ |                             |--------------------------------------|
+ |                             |     N      |   NMiss    |    Mean    |
+ |-----------------------------+------------+------------+------------|
+ |Total                        |    50926.00|    29755.00|       86.78|
+ |1996                         |        3.00|     5099.00|      100.00|
+ |1997                         |        9.00|     5751.00|      100.00|
+ |1998                         |       11.00|     7624.00|      100.00|
+ |1999                         |     1813.00|     5779.00|       94.76|
+ |2000                         |     5782.00|      562.00|       93.15|
+ |2001                         |     6033.00|      580.00|       91.02|
+ |2002                         |     6271.00|      614.00|       88.82|
+ |2003                         |     6496.00|      684.00|       87.13|
+ |2004                         |     7776.00|      944.00|       86.24|
+ |2005                         |     8453.00|     1143.00|       80.60|
+ |2006                         |     6671.00|      813.00|       82.81|
+ |2007                         |     1608.00|      162.00|       81.03|
+ ----------------------------------------------------------------------

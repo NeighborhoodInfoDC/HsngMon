@@ -1,0 +1,254 @@
+/**************************************************************************
+ Program:  Sec8MF_expiring_rpt.sas
+ Library:  NAS
+ Project:  NeighborhoodInfo DC
+ Author:   P. Tatian
+ Created:  06/29/05
+ Version:  SAS 8.2
+ Environment:  Windows
+ 
+ Description:  Report showing upcoming expiring Sec. 8 MF projects.
+
+ Modifications:
+**************************************************************************/
+
+%include "K:\Metro\PTatian\DCData\SAS\Inc\Stdhead.sas";
+***%include "C:\DCData\SAS\Inc\Stdhead.sas";
+
+** Define libraries **;
+%DCData_lib( HsngMon )
+%DCData_lib( NAS )
+%DCData_lib( HUD )
+
+%let cur_rpt_date = '01jan2007'd; 
+%let rpt_title = Summer 2007;
+%let hud_file_date = '07/03/2007';
+%let rpt_yr = 2007;
+%let rpt_qtr = 3;
+%let ta_data = Nas.ta_proj_list_2007_07;
+
+**** Don't change ****;
+%let data = HsngMon.S8summary_&rpt_yr._&rpt_qtr;
+%let num_qtrs = 4;
+%let num_years = 9;
+%let rpt_path = &_dcdata_path\HsngMon\Prog\&rpt_yr-&rpt_qtr;
+%let rpt_file = S8expiring_&rpt_yr._&rpt_qtr;
+
+%let BLANK = '20'x;    ** Blank character for DDE output **;
+
+%let cur_rpt_date_fmt = %sysfunc( putn( &cur_rpt_date, mmddyy. ) );
+
+%fdate()
+
+** Create format for next four quarters **;
+
+%nextqtrs_format( date=&cur_rpt_date, label_prefix=%str(\line\ql\keepn\i Expiring ), month_fmt=monname20. )
+
+proc sort data=&ta_data out=ta_proj_list_new;
+  by hud_contract_number;
+
+data SEC8MF (compress=no);
+
+  merge
+    &data (in=inHud where=(act_contracts > 0))
+    ta_proj_list_new 
+      (keep=hud_contract_number ta_cur_provider
+       rename=(hud_contract_number=contract_number))
+    /*** TEMPORARY MERGE UNTIL OTHER DATA ADDED TO FILE ***/
+    /*Hud.Sec8mf_current_dc */
+    Hud.Sec8mf_2007_07_dc
+      (keep=contract_number property_name_text zip_code owner_: mgmt_: );
+    by contract_number;
+  
+  if cur_program_type_name in ('PRAC/202','PRAC/811','UHsngMonstPrj SCHAP','Service Coo') then delete;
+
+  if inHUD and not( missing( cur_expiration_date  ) ) and
+     not( missing( put( cur_expiration_date , nextqtrs. ) ) );
+  
+  ***where '01apr2005'd <= cur_expiration_date  < '01apr2006'd;
+  
+  contracts = 1;
+  
+  quarter = cur_expiration_date ;
+  
+  format quarter nextqtrs.;
+  
+  risk = "?";
+  
+  ** Reformat text to proper case **;
+
+  array a{*} cur_owner_name mgmt_agent_org_name mgmt_agent_address_line1 mgmt_agent_city_name;
+  
+  do i = 1 to dim( a );
+    a{i} = propcase( a{i} );
+  end;
+  
+run;
+  
+proc sort 
+  data=SEC8MF;
+  by cur_expiration_date ;
+
+options missing=' ' /*orientation=landscape*/;
+options nodate nonumber nobyline;
+
+** Summary report **;
+
+ods rtf file="&rpt_path\&rpt_file._sum.rtf" style=Styles.Rtf_arial_9pt/*Rtf_arial_9pt_grhd*/;
+ods listing close;
+
+proc report data=SEC8MF list nowd split='*';
+  column quarter contracts cur_address_line1_text cur_expiration_date 
+         /*risk*/ ta_cur_provider cur_assisted_units_count /*assisted_units_count*/cur_owner_name;
+  define quarter / group order=data format=nextqtrs. noprint;
+  define contracts / analysis sum noprint;
+  define cur_address_line1_text / display 'Address';
+  define cur_expiration_date  / display format=mmddyy10. 'Expires';
+  /*define risk / display format=$6. 'Expir.*Risk';*/
+  define ta_cur_provider / display 'TA Provider';
+  define cur_assisted_units_count /*assisted_units_count*// analysis sum 'Assisted Units';
+  define cur_owner_name / display 'Owner';
+  break before quarter / skip;
+  break after quarter / ;
+  compute before quarter;
+    length text $ 80;
+    text = left( put( quarter, nextqtrs. ) );
+    line text $80.;
+  endcomp;
+  compute after quarter;
+    length text2 $ 80;
+    text2 = '\ql\line\b Quarter total:  ' || trim( left( put( contracts.sum, comma8. ) ) ) ||
+           ' contracts with ' || trim( left( put( /*assisted_units_count*/ cur_assisted_units_count.sum, comma8. ) ) ) ||
+           ' units.';
+    line text2 $80.;
+  endcomp;
+  title1 height=11pt 'Section 8 Multifamily Report:  Summary of Upcoming Expiring Contracts (next four quarters)';
+  title2 height=11pt "District of Columbia Housing Monitor: &rpt_title";
+  ***title3 height=11pt 'Washington, D.C.';
+  footnote1 height=9pt '\b0\i NeighborhoodInfo DC (www.NeighborhoodInfoDC.org)';
+  footnote2 height=9pt j=r "\b0\i Created &fdate";
+  footnote3 height=9pt j=r '\b0\i {Page}\~{\field{\*\fldinst{\b0\i PAGE }}}\~{\b0\i of}\~{\field{\*\fldinst{\b0\i NUMPAGES }}}';
+  *footnote2 height=9pt j=r '\b0\i {Page}\~{\field{\*\fldinst{\pard\b0\i\chcbpat8\qc\f1\fs19\cf1{PAGE }\cf0\chcbpat0}}}';
+  *footnote2 height=9pt j=r '\b0\i {Page}\~{\field{\*\fldinst{\b0\i PAGE }}}\~{\b0\i of}\~{\field{\*\fldinst{\b0\i NUMPAGES }}}';
+
+run;
+
+ods rtf close;
+ods listing;
+
+/** Macro Line_out - Start Definition **/
+
+%macro Line_out( line_str, ind=Y, keepn=Y );
+
+  %let ind = %upcase( &ind );
+  %let keepn = %upcase( &keepn );
+  
+  %** If &ind=Y, add code for indenting line and adjust line spacing **;
+
+  %if &ind = Y %then %do;
+    buff = '\sb0\sa60\~\~' || &line_str;
+  %end;
+  %else %do;
+    buff = &line_str;
+  %end;
+  
+  %** If &keepn=Y, add code for keep paragraph with next **;
+  
+  %if &keepn = Y %then %do;
+    buff = '\keepn' || buff;
+  %end;
+  
+  output;
+  rownum + 1;
+
+%mend Line_out;
+
+/** End Macro Definition **/
+
+
+**** Detail report ****;
+  
+data detail_dat (keep=cur_expiration_date  buff rownum);
+
+  length buff $ 200;
+
+  set SEC8MF;
+
+  rownum = 1;
+
+  %line_out( 
+    '\b ' || trim( cur_address_line1_text ) || ", Washington, DC " || trim( zip_code ) ||
+    '\b0\~ / Contract no.: ' || contract_number,
+    ind=n
+  )
+  
+  %line_out( "Name:  " || property_name_text )
+  
+  %line_out( put( ward2002, $ward02a. ) || " / " || 
+             put( anc2002, $anc02a. ) || " / " ||
+             trim( put( cluster_tr2000, $clus00a. ) ) || " (" || 
+               left( trim( put( cluster_tr2000, $clus00s. ) ) ) || ") / " ||
+             put( geo2000, $geo00a. ) )
+             
+  /*%line_out( "Contract no.:  " || contract_number )*/
+  
+  %line_out( "Expired:  " || trim( put( cur_expiration_date, mmddyy10. ) ) ||
+             "  /  TRACS status:  " || trim( left( put( cur_tracs_status, $S8STAT. ) ) ) )
+  
+  %line_out( 
+    "Num. assisted units: " || 
+    trim( left( put( cur_assisted_units_count /*assisted_units_count*/, comma8.0 ) ) ) ||
+    " (" || left( trim( cur_rent_to_fmr_desc/*rent_to_FMR_description*/ ) ) ||
+    ") / " || "Total units: " || trim( left( put( cur_total_unit_count, comma8.0 ) ) )
+  )
+  %line_out( "Program: " || cur_program_type_name )
+  %line_out( 
+    "Owner:  " || 
+    compbl( 
+      trim( cur_owner_name ) || ", " || 
+      trim( owner_address_line1 ) || ", " ||
+      trim( owner_city_name ) || ", " ||
+      trim( owner_state_code ) || " " ||
+      trim( owner_zip_code ) 
+    )
+  )
+  
+  if not( missing( mgmt_agent_org_name ) ) then do;
+    %line_out( 
+      "Manager: " ||
+      compbl( 
+        trim( mgmt_agent_org_name ) || ", " || 
+        trim( mgmt_agent_address_line1 ) || ", " ||
+        trim( mgmt_agent_city_name ) || ", " ||
+        trim( mgmt_agent_state_code ) || " " ||
+        trim( mgmt_agent_zip_code ) 
+      )
+    )
+  end;
+  
+  %line_out( "Tenants being assisted by: " || trim( left( ta_cur_provider ) ) )
+
+  %line_out( " ", keepn=n )         /** Blank line for end of property record **/
+
+run;
+
+ods rtf file="&rpt_path\&rpt_file._det.rtf" style=Styles.Rtf_arial_9pt/*Rtf_arial_9pt_grhd*/;
+ods listing close;
+
+proc report data=detail_dat list nowd noheader;
+  by cur_expiration_date;
+  column buff;
+  define buff / display;
+  format 
+    cur_expiration_date  nextqtrs.;
+  title1 height=11pt 'Section 8 Multifamily Report:  Detail for Upcoming Expiring Contracts (next four quarters)';
+  title2 height=11pt "District of Columbia Housing Monitor: &rpt_title";
+  ***title3 height=11pt 'Washington, D.C.';
+  title3 height=11pt ' ';
+  title4 height=9pt "\b0\i #byval( cur_expiration_date )";
+  
+run;
+
+ods rtf close;
+ods listing;
+

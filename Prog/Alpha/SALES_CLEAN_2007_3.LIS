@@ -1,0 +1,74 @@
+ /SALES_CLEAN_2007_3.SAS;5:  NeighborhoodInfo DC                                           16:28 Saturday, August 4, 2007   1
+ File = Sales_clean_2007_3
+ 
+ The CONTENTS Procedure
+ 
+ Data Set Name        WORK.SALES_CLEAN_2007_3                  Observations          79162
+ Member Type          DATA                                     Variables             9    
+ Engine               V9                                       Indexes               0    
+ Created              Saturday, August 04, 2007 04:28:23 PM    Observation Length    64   
+ Last Modified        Saturday, August 04, 2007 04:28:23 PM    Deleted Observations  0    
+ Protection                                                    Compressed            NO   
+ Data Set Type                                                 Sorted                NO   
+ Label                                                                                    
+ Data Representation  ALPHA_VMS_64                                                        
+ Encoding             latin1  Western (ISO)                                               
+ 
+ 
+                                 Engine/Host Dependent Information
+ 
+ Data Set Page Size          8192                                                                  
+ Number of Data Set Pages    624                                                                   
+ First Data Page             1                                                                     
+ Max Obs per Page            127                                                                   
+ Obs in First Data Page      94                                                                    
+ Number of Data Set Repairs  0                                                                     
+ Filename                    $1$DGA156:[SCRATCH.DCDATA.SAS$WORK206943B0]SALES_CLEAN_2007_3.SAS7BDAT
+ Release Created             9.0101M3                                                              
+ Host Created                OpenVMS                                                               
+ File Size (blocks)          9985                                                                  
+ 
+ 
+                              Alphabetic List of Variables and Attributes
+  
+ #    Variable          Type    Len    Format       Label
+ 
+ 4    Cluster_tr2000    Char      2    $CLUS00A.    Neighborhood cluster (tract-based, 2000)          
+ 2    SALEDATE          Num       8    MMDDYY10.    Property sale date                                
+ 1    SALEPRICE         Num       8                 Property sale price ($)                           
+ 6    SSL               Char     17                 Property Identification Number (Square/Suffix/Lot)
+ 7    UI_PROPTYPE       Char      2    $UIPRTYP.    UI property type code                             
+ 3    Ward2002          Char      1    $WARD02A.    Ward (2002)                                       
+ 5    owner_occ_sale    Num       3    YESNO.       Owner-occupied sale                               
+ 8    saledate_yr       Num       8                                                                   
+ 9    saleprice_adj     Num       8                                                                   
+1/SALES_CLEAN_2007_3.SAS;5:  NeighborhoodInfo DC                                           16:28 Saturday, August 4, 2007   2
+ File = Sales_clean_2007_3
+ Printing first 10 obs.
+ 
+                                     Cluster_   owner_                                             saledate_ saleprice_
+   Obs SALEPRICE   SALEDATE Ward2002  tr2000   occ_sale     SSL               UI_PROPTYPE              yr        adj
+ 
+     1   475000  08/07/2001  Ward 2  Cluster 5   Yes    0004N   2001 Residential: Condominium unit    2001    540711.46
+     2   575000  10/29/2003  Ward 2  Cluster 5   Yes    0004N   2001 Residential: Condominium unit    2003    630000.00
+     3   518950  09/28/2001  Ward 2  Cluster 5   Yes    0004N   2002 Residential: Condominium unit    2001    590741.50
+     4   525000  08/07/2001  Ward 2  Cluster 5   Yes    0004N   2003 Residential: Condominium unit    2001    597628.46
+     5   550000  10/12/2001  Ward 2  Cluster 5   Yes    0004N   2004 Residential: Condominium unit    2001    626086.96
+     6   520000  02/04/2002  Ward 2  Cluster 5     N    0004N   2005 Residential: Condominium unit    2002    582723.74
+     7   525000  08/02/2001  Ward 2  Cluster 5   No     0004N   2006 Residential: Condominium unit    2001    597628.46
+     8   560000  07/17/2001  Ward 2  Cluster 5   Yes    0004N   2007 Residential: Condominium unit    2001    637470.36
+     9   850000  05/17/2005  Ward 2  Cluster 5     N    0004N   2007 Residential: Condominium unit    2005    877419.35
+    10   580000  08/17/2001  Ward 2  Cluster 5   No     0004N   2008 Residential: Condominium unit    2001    660237.15
+1/SALES_CLEAN_2007_3.SAS;5:  NeighborhoodInfo DC                                           16:28 Saturday, August 4, 2007   3
+ File = Sales_clean_2007_3
+ 
+ The MEANS Procedure
+ 
+ Variable              N             Sum            Mean         Std Dev         Minimum         Maximum
+ -------------------------------------------------------------------------------------------------------
+ SALEPRICE         79162     23721267291       299654.72       250333.01        19500.00      2575000.00
+ SALEDATE          79162      1211977125        15310.09         1145.61        13150.00        17164.00
+ owner_occ_sale    49670        43189.00       0.8695188       0.3368355               0       1.0000000
+ saledate_yr       79162       158434710         2001.40       3.1267473         1996.00         2006.00
+ saleprice_adj     79162     26165858720       330535.59       264690.72        25055.45      2580645.16
+ -------------------------------------------------------------------------------------------------------
