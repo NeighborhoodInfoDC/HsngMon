@@ -64,3 +64,4 @@ Web profiles/
 # Other
 *.bat
 Thumbs.db
+*.ps1
